@@ -119,11 +119,14 @@ app.delete('/favorites/:imdbID', (req, res) => {
 
 // Health check endpoint
 app.get('/health', (req, res) => {
-  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+ // res.json({ status: 'ok', timestamp: new Date().toISOString() });
+   res.json({ status: 'ok' });
 });
 
 // Start server - no graceful shutdown
+if (require.main === module) {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`API Key: ${apiKey.substring(0, 4)}...`);
 });
+}
